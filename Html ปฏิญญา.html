@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ปฏิญญาว่าด้วยการศึกษาอิสลามแห่งอนาคต | นายยูซุฟ แขกพงศ์</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700&family=Sarabun:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green:#0b3d2e; --green2:#145a43; --green3:#1f7a5a;
+    --gold:#c9a24a; --gold2:#e6c97a; --cream:#faf7ef; --ink:#1d2b26; --muted:#5d6b66;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{width:100%;height:100%;background:#0a2a20;overflow:hidden;
+    font-family:'Sarabun','Tahoma',sans-serif;color:var(--ink)}
+  .stage{width:1280px;height:720px;position:absolute;left:50%;top:50%;
+    transform-origin:center center;box-shadow:0 20px 60px rgba(0,0,0,.45)}
+  .slide{position:absolute;inset:0;padding:64px 80px 70px;background:var(--cream);
+    opacity:0;visibility:hidden;transition:opacity .5s ease, transform .5s ease;transform:translateY(12px);overflow:hidden}
+  .slide.active{opacity:1;visibility:visible;transform:none}
+  /* Geometric pattern */
+  .slide::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.06;
+    background-image:
+      linear-gradient(45deg,var(--green) 25%,transparent 25%,transparent 75%,var(--green) 75%),
+      linear-gradient(45deg,var(--green) 25%,transparent 25%,transparent 75%,var(--green) 75%);
+    background-size:40px 40px;background-position:0 0,20px 20px;
+    -webkit-mask-image:linear-gradient(to left,#000 0%,transparent 45%);mask-image:linear-gradient(to left,#000 0%,transparent 45%)}
+  .slide > *{position:relative}
+  .topbar{position:absolute;left:0;top:0;right:0;height:8px;
+    background:linear-gradient(90deg,var(--green),var(--green3) 60%,var(--gold))}
+  .kicker{font-family:'Prompt';font-size:18px;letter-spacing:2px;color:var(--gold);font-weight:600;text-transform:uppercase;margin-bottom:6px}
+  h2{font-family:'Prompt';font-size:40px;line-height:1.3;color:var(--green);font-weight:700}
+  h2 .en{display:block;font-size:20px;font-weight:500;color:var(--muted);margin-top:4px}
+  .rule{width:90px;height:4px;background:var(--gold);border-radius:2px;margin:18px 0 30px}
+  .footer{position:absolute;left:80px;right:80px;bottom:22px;display:flex;justify-content:space-between;
+    font-size:15px;color:var(--muted);border-top:1px solid rgba(11,61,46,.15);padding-top:10px}
+  .footer b{color:var(--green)}
+  ul.pts{list-style:none;display:flex;flex-direction:column;gap:22px}
+  ul.pts li{font-size:26px;line-height:1.5;padding-left:44px;position:relative}
+  ul.pts li::before{content:"";position:absolute;left:6px;top:13px;width:16px;height:16px;
+    background:var(--gold);transform:rotate(45deg);border-radius:2px;box-shadow:0 0 0 4px rgba(201,162,74,.2)}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  .card{background:#fff;border-radius:16px;padding:28px 26px;border-top:6px solid var(--green2);
+    box-shadow:0 8px 24px rgba(11,61,46,.08)}
+  .card h3{font-family:'Prompt';font-size:24px;color:var(--green);margin-bottom:6px}
+  .card .sub{font-size:16px;color:var(--gold);font-weight:600;margin-bottom:12px;font-family:'Prompt'}
+  .card p{font-size:20px;line-height:1.6;color:var(--ink)}
+  .num{font-family:'Prompt';font-weight:700;color:var(--gold);font-size:22px}
+  .quote{background:var(--green);color:#fff;border-radius:16px;padding:26px 34px;font-size:26px;line-height:1.6;
+    border-left:8px solid var(--gold);margin-bottom:30px}
+  .quote b{color:var(--gold2)}
+  .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+  .chip{background:rgba(20,90,67,.08);color:var(--green);border:1px solid rgba(20,90,67,.25);
+    border-radius:30px;padding:6px 16px;font-size:16px;font-weight:500}
+
+  /* Title slide */
+  .title-slide{background:radial-gradient(circle at 80% 20%,#1a6b50 0%,var(--green) 55%,#072a1f 100%);color:#fff;
+    display:flex;flex-direction:column;justify-content:center;padding:70px 90px}
+  .title-slide::before{opacity:.08;background-image:
+      linear-gradient(45deg,var(--gold) 25%,transparent 25%,transparent 75%,var(--gold) 75%),
+      linear-gradient(45deg,var(--gold) 25%,transparent 25%,transparent 75%,var(--gold) 75%);}
+  .title-slide .badge{display:inline-block;border:1px solid var(--gold);color:var(--gold2);padding:6px 18px;border-radius:30px;
+    font-family:'Prompt';font-size:16px;letter-spacing:1px;margin-bottom:24px;align-self:flex-start}
+  .title-slide h1{font-family:'Prompt';font-size:46px;line-height:1.3;font-weight:700}
+  .title-slide h1 span{color:var(--gold2)}
+  .title-slide .h1sub{font-family:'Prompt';font-size:27px;line-height:1.5;margin-top:12px;color:#e9efe9;font-weight:500}
+  .title-slide .en{font-size:18px;color:#b9cfc5;margin-top:16px;font-style:italic;line-height:1.5;max-width:1050px}
+  .title-slide .presenter{margin-top:38px;padding-top:22px;border-top:1px solid rgba(230,201,122,.4);display:flex;gap:22px;align-items:center}
+  .title-slide .presenter .bar{width:6px;height:70px;background:var(--gold);border-radius:3px}
+  .title-slide .presenter .name{font-family:'Prompt';font-size:26px;font-weight:600}
+  .title-slide .presenter .pos{font-size:18px;color:#cfe0d8;line-height:1.5}
+
+  /* Method stats */
+  .stat{background:#fff;border-radius:16px;padding:30px 26px;text-align:center;box-shadow:0 8px 24px rgba(11,61,46,.08);
+    border-bottom:6px solid var(--gold)}
+  .stat .big{font-family:'Prompt';font-size:54px;font-weight:700;color:var(--green);line-height:1.1}
+  .stat .lbl{font-family:'Prompt';font-size:21px;color:var(--gold);font-weight:600;margin:10px 0 8px}
+  .stat p{font-size:19px;line-height:1.55;color:var(--muted)}
+  .formula{margin-top:30px;background:rgba(20,90,67,.07);border-radius:12px;padding:16px 26px;font-size:20px;color:var(--green);
+    display:flex;gap:30px;align-items:center}
+  .formula code{font-family:'Prompt';font-size:22px;font-weight:600;background:#fff;padding:6px 16px;border-radius:8px;color:var(--green)}
+
+  /* Results */
+  .results{display:grid;grid-template-columns:330px 1fr;gap:50px;align-items:center}
+  .ring{width:300px;height:300px;border-radius:50%;background:conic-gradient(var(--gold) 0 93%, rgba(11,61,46,.1) 93% 100%);
+    display:flex;align-items:center;justify-content:center}
+  .ring .inner{width:240px;height:240px;border-radius:50%;background:var(--green);color:#fff;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;text-align:center}
+  .ring .inner .v{font-family:'Prompt';font-size:64px;font-weight:700;color:var(--gold2);line-height:1}
+  .ring .inner .t{font-size:18px;margin-top:8px;line-height:1.4}
+  .bars{display:flex;flex-direction:column;gap:30px}
+  .barrow .top{display:flex;justify-content:space-between;font-size:23px;margin-bottom:8px;font-family:'Prompt'}
+  .barrow .top b{color:var(--green)}
+  .barrow .top span{color:var(--gold);font-weight:700}
+  .track{height:26px;background:rgba(11,61,46,.08);border-radius:13px;overflow:hidden}
+  .fill{height:100%;border-radius:13px;background:linear-gradient(90deg,var(--green2),var(--green3));width:0;transition:width 1.2s ease .3s}
+  .slide.active .fill{width:var(--w)}
+  .tag{display:inline-block;margin-left:10px;font-size:14px;background:var(--gold);color:#fff;padding:2px 10px;border-radius:12px;vertical-align:middle;font-family:'Sarabun'}
+
+  /* Expert voices */
+  .voice{background:#fff;border-radius:16px;padding:26px;box-shadow:0 8px 24px rgba(11,61,46,.08);position:relative}
+  .voice::after{content:"“";position:absolute;right:20px;top:-6px;font-size:110px;color:rgba(201,162,74,.25);font-family:Georgia,serif}
+  .voice .who{font-family:'Prompt';font-size:17px;color:#fff;background:var(--green2);display:inline-block;padding:4px 14px;border-radius:20px;margin-bottom:10px}
+  .voice h3{font-family:'Prompt';font-size:22px;color:var(--green);margin-bottom:10px}
+  .voice p{font-size:19px;line-height:1.6}
+
+  /* Shift table */
+  .shift{display:flex;flex-direction:column;gap:20px}
+  .shift .row{display:grid;grid-template-columns:1fr 70px 1fr;align-items:center}
+  .shift .from,.shift .to{border-radius:14px;padding:20px 26px;font-size:23px;line-height:1.45}
+  .shift .from{background:#efe9da;color:#6b5a35}
+  .shift .to{background:var(--green);color:#fff}
+  .shift .from small,.shift .to small{display:block;font-size:15px;letter-spacing:1px;opacity:.75;font-family:'Prompt'}
+  .shift .arrow{text-align:center;font-size:36px;color:var(--gold);font-weight:700}
+
+  /* Model */
+  .roof{background:linear-gradient(90deg,var(--green),var(--green3));color:#fff;text-align:center;border-radius:16px 16px 6px 6px;
+    padding:16px;font-family:'Prompt';font-size:24px;font-weight:600;margin-bottom:20px;border-bottom:5px solid var(--gold)}
+  .roof span{color:var(--gold2)}
+  .pillar{background:#fff;border-radius:10px;padding:24px;box-shadow:0 8px 24px rgba(11,61,46,.08);border-left:6px solid var(--gold);min-height:270px}
+  .pillar .no{font-family:'Prompt';font-size:42px;font-weight:700;color:rgba(201,162,74,.6);line-height:1}
+  .pillar h3{font-family:'Prompt';font-size:21px;color:var(--green);margin:6px 0 4px}
+  .pillar .th{font-family:'Prompt';font-size:18px;color:var(--gold);font-weight:600;margin-bottom:10px}
+  .pillar p{font-size:18.5px;line-height:1.6}
+  .base{margin-top:18px;height:14px;background:var(--green);border-radius:6px}
+
+  /* Conclusion */
+  .concl{background:radial-gradient(circle at 15% 85%,#1a6b50 0%,var(--green) 55%,#072a1f 100%);color:#fff}
+  .concl h2{color:#fff}
+  .concl .kicker{color:var(--gold2)}
+  .concl .quote{background:rgba(255,255,255,.07);border:1px solid rgba(230,201,122,.35);border-left:8px solid var(--gold);font-size:24px}
+  .ulul{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .ulul div{border:1px solid rgba(230,201,122,.45);border-radius:14px;padding:18px;text-align:center;font-size:21px;line-height:1.5;
+    background:rgba(255,255,255,.04)}
+  .ulul div b{display:block;font-family:'Prompt';color:var(--gold2);font-size:23px;margin-bottom:4px}
+  .thanks{margin-top:26px;display:flex;justify-content:space-between;align-items:flex-end}
+  .thanks .ty{font-family:'Prompt';font-size:36px;font-weight:700;color:var(--gold2)}
+  .thanks .who{text-align:right;font-size:18px;line-height:1.5;color:#d6e4dd}
+  .concl .footer{color:#a9c4b8;border-color:rgba(255,255,255,.15)}
+  .concl .footer b{color:var(--gold2)}
+
+  /* Controls */
+  .controls{position:fixed;right:20px;bottom:18px;display:flex;gap:8px;align-items:center;z-index:10;font-family:'Prompt'}
+  .controls button{width:42px;height:42px;border-radius:50%;border:none;background:rgba(201,162,74,.9);color:#0b3d2e;font-size:20px;cursor:pointer;font-weight:700}
+  .controls button:hover{background:var(--gold2)}
+  .controls .count{color:#e6c97a;font-size:15px;min-width:60px;text-align:center}
+  .progress{position:fixed;left:0;bottom:0;height:4px;background:var(--gold);z-index:10;transition:width .4s}
+
+  @media print{
+    @page{size:1280px 720px;margin:0}
+    html,body{overflow:visible;background:#fff}
+    .stage{position:static;transform:none!important;box-shadow:none}
+    .slide{position:relative;opacity:1;visibility:visible;transform:none;width:1280px;height:720px;page-break-after:always;
+      -webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .fill{width:var(--w)!important}
+    .controls,.progress{display:none}
+  }
+</style>
+</head>
+<body>
+<div class="stage" id="stage">
+
+  <!-- 1. Title -->
+  <section class="slide title-slide active">
+    <div class="badge">ปฏิญญาว่าด้วยการศึกษาอิสลามแห่งอนาคต · A MANIFESTO</div>
+    <h1>ปฏิญญาว่าด้วย<span>การศึกษาอิสลามแห่งอนาคต</span></h1>
+    <div class="h1sub">การถอดรหัสวิกฤตตัวตนและการสร้างกระบวนทัศน์ใหม่<br>ผ่านการวิเคราะห์ความต้องการจำเป็นของหลักสูตรตัรฺบียะฮ์</div>
+    <div class="en">A Manifesto for Future Islamic Education: Decrypting Identity Crises and Forging a New Tarbiyah Paradigm through Empirical Needs Assessment</div>
+    <div class="presenter">
+      <div class="bar"></div>
+      <div>
+        <div class="name">นำเสนอโดย นายยูซุฟ แขกพงศ์</div>
+        <div class="pos">ผู้อำนวยการโรงเรียนหาดใหญ่วิทยาคาร<br>(โรงเรียนในเครือสหกรณ์บริการอัศศิดดีก จำกัด)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Introduction -->
+  <section class="slide">
+    <div class="topbar"></div>
+    <div class="kicker">บทนำ · Introduction</div>
+    <h2>วิกฤตที่แท้จริงของเยาวชนมุสลิมร่วมสมัย</h2>
+    <div class="rule"></div>
+    <div class="quote">วิกฤตในปัจจุบันมิใช่การขาดแคลนตำราศาสนา แต่คือ <b>“ภาวะสูญสิ้นอำนาจอธิปไตยทางปัญญา”</b> (Cognitive Sovereignty Crisis)</div>
+    <ul class="pts">
+      <li>เยาวชนดำรงชีวิตอยู่ภายใต้ <b>“ระบอบอัลกอริทึม”</b> และสังคมพหุวัฒนธรรมที่ซับซ้อน</li>
+      <li>การศึกษาแบบเดิมที่เน้นการท่องจำและการควบคุมจากภายนอกเริ่มไม่ทันต่อบริบทปัจจุบัน</li>
+      <li>ผู้เรียนจึงเปราะบางต่อข้อมูลบิดเบือนและอิทธิพลของปัญญาประดิษฐ์</li>
+    </ul>
+    <div class="footer"><span><b>ปฏิญญาว่าด้วยการศึกษาอิสลามแห่งอนาคต</b> · โรงเรียนหาดใหญ่วิทยาคาร</span><span class="pg"></span></div>
+  </section>
+
+  <!-- 3. Theoretical Framework -->
+  <section class="slide">
+    <div class="topbar"></div>
+    <div class="kicker">กรอบแนวคิด · Theoretical Framework</div>
+    <h2>รากฐานเชิงทฤษฎีของหลักสูตรตัรฺบียะฮ์</h2>
+    <div class="rule"></div>
+    <div class="grid3">
+      <div class="card">
+        <h3>ภววิทยาอิสลาม</h3>
+        <div class="sub">Islamic Ontology</div>
+        <p>ธรรมชาติแห่งความจริงที่ตั้งอยู่บนหลัก <b>เตาฮีด</b> และสถานะของมนุษย์ในฐานะ <b>เคาะลีฟะฮ์</b></p>
+      </div>
+      <div class="card">
+        <h3>ญาณวิทยาอิสลาม</h3>
+        <div class="sub">Islamic Epistemology</div>
+        <p>แหล่งที่มาของความรู้ ได้แก่ <b>วะฮีย์</b> ปัญญาและการพินิจพิเคราะห์ และประสบการณ์ทางจิตวิญญาณ</p>
+      </div>
+      <div class="card">
+        <h3>ทฤษฎีการศึกษาร่วมสมัย</h3>
+        <div class="sub">Contemporary Education</div>
+        <p>รูปแบบการพัฒนาหลักสูตรของ <b>Hilda Taba</b>, Constructivism, SEL, Positive Discipline และ Self-Determination Theory</p>
+      </div>
+    </div>
+    <div class="chips">
+      <span class="chip">อูลุลอัลบาบ (Ulul-Albab)</span><span class="chip">ตะบะยุน (Tabayyun)</span>
+      <span class="chip">Ta'dib</span><span class="chip">อัคลาก (Akhlaq)</span>
+      <span class="chip">วะสะฏียะฮ์ (Wasatiyyah)</span><span class="chip">Tazkiyatun Nafs</span>
+    </div>
+    <div class="footer"><span><b>ปฏิญญาว่าด้วยการศึกษาอิสลามแห่งอนาคต</b> · โรงเรียนหาดใหญ่วิทยาคาร</span><span class="pg"></span></div>
+  </section>
+
+  <!-- 4. Methodology -->
+  <section class="slide">
+    <div class="topbar"></div>
+    <div class="kicker">ระเบียบวิธีวิจัย · Methodology</div>
+    <h2>การวินิจฉัยความต้องการจำเป็นเชิงประจักษ์</h2>
+    <div class="rule"></div>
+    <div class="grid3">
+      <div class="stat">
+        <div class="big">Mixed</div>
+        <div class="lbl">การวิจัยแบบผสมผสาน</div>
+        <p>วินิจฉัยความต้องการจำเป็น (Needs Assessment) ตามขั้นตอนของ Hilda Taba</p>
+      </div>
+      <div class="stat">
+        <div class="big">370</div>
+        <div class="lbl">กลุ่มตัวอย่าง (คน)</div>
+        <p>ผู้เรียนวิถีอิสลาม<br>ระดับมัธยมศึกษาตอนปลาย</p>
+      </div>
+      <div class="stat">
+        <div class="big">A–F</div>
+        <div class="lbl">เสียงสะท้อนผู้ทรงคุณวุฒิ</div>
+        <p>ด้านหลักสูตร จิตวิทยา อิสลามศึกษา สังคมวิทยา และศาสนา</p>
+      </div>
+    </div>
+    <div class="formula">
+      <span>ดัชนีลำดับความสำคัญ</span>
+      <code>PNI<sub>modified</sub> = (I − D) / D</code>
+      <span>I = สภาพที่พึงประสงค์ · D = สภาพปัจจุบัน</span>
+    </div>
+    <div class="footer"><span><b>ปฏิญญาว่าด้วยการศึกษาอิสลามแห่งอนาคต</b> · โรงเรียนหาดใหญ่วิทยาคาร</span><span class="pg"></span></div>
+  </section>
+
+  <!-- 5. Results -->
+  <section class="slide">
+    <div class="topbar"></div>
+    <div class="kicker">ผลการวิจัย · Findings</div>
+    <h2>ผลการวิเคราะห์ความต้องการจำเป็น (PNI<sub>modified</sub>)</h2>
+    <div class="rule"></div>
+    <div class="results">
+      <div class="ring"><div class="inner"><div class="v">0.258</div><div class="t">ค่าดัชนีความต้องการจำเป็นรวม<br><b style="color:#e6c97a">ระดับวิกฤตสูงสุด</b></div></div></div>
+      <div class="bars">
+        <div class="barrow">
+          <div class="top"><b>มิติการพัฒนาปัญญา <span class="tag">ลำดับ 1</span></b><span>0.263</span></div>
+          <div class="track"><div class="fill" style="--w:87.7%"></div></div>
+        </div>
+        <div class="barrow">
+          <div class="top"><b>มิติการพัฒนาพฤติกรรมและสังคม <span class="tag">ลำดับ 1</span></b><span>0.263</span></div>
+          <div class="track"><div class="fill" style="--w:87.7%"></div></div>
+        </div>
+        <div class="barrow">
+          <div class="top"><b>มิติการพัฒนาจิตวิญญาณ</b><span>0.250</span></div>
+          <div class="track"><div class="fill" style="--w:83.3%"></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="footer"><span><b>ปฏิญญาว่าด้วยการศึกษาอิสลามแห่งอนาคต</b> · โรงเรียนหาดใหญ่วิทยาคาร</span><span class="pg"></span></div>
+  </section>
+
+  <!-- 6. Expert Voices -->
+  <section class="slide">
+    <div class="topbar"></div>
+    <div class="kicker">ข้อค้นพบเชิงคุณภาพ · Expert Insights</div>
+    <h2>เสียงสะท้อนจากผู้ทรงคุณวุฒิ</h2>
+    <div class="rule"></div>
+    <div class="grid3">
+      <div class="voice">
+        <div class="who">ผู้เชี่ยวชาญ A และ C</div>
+        <h3>หลักสูตรและจิตวิทยา</h3>
+        <p>การศึกษาอิสลามมักติดกับดัก <b>การท่องจำ</b> และพิธีกรรมแบบแยกส่วน ทำให้ผู้เรียนเปราะบางต่อข้อมูลบิดเบือนและ AI</p>
+      </div>
+      <div class="voice">
+        <div class="who">ผู้เชี่ยวชาญ B และ F</div>
+        <h3>อิสลามศึกษาและสังคมวิทยา</h3>
+        <p>เยาวชนต้องได้รับการหล่อหลอม <b>“อัคลาก”</b> เพื่อเป็นพลเมืองคุณภาพที่อยู่ร่วมในสังคมพหุวัฒนธรรมได้โดยไม่ถูกบังคับกดทับ</p>
+      </div>
+      <div class="voice">
+        <div class="who">ผู้เชี่ยวชาญ D และ E</div>
+        <h3>จิตวิทยาและศาสนา</h3>
+        <p>ฐานรากที่ขาดหายคือ <b>อากีดะฮ์แนวทางสายกลาง (Wasatiyyah)</b> ซึ่งต้องขับเคลื่อนผ่านระบบนิเวศหอพักและแรงจูงใจภายใน</p>
+      </div>
+    </div>
+    <div class="footer"><span><b>ปฏิญญาว่าด้วยการศึกษาอิสลามแห่งอนาคต</b> · โรงเรียนหาดใหญ่วิทยาคาร</span><span class="pg"></span></div>
+  </section>
+
+  <!-- 7. Paradigm Shift -->
+  <section class="slide">
+    <div class="topbar"></div>
+    <div class="kicker">การถอดรหัสวิกฤต · Paradigm Shift</div>
+    <h2>จากข้อค้นพบสู่การเปลี่ยนผ่านกระบวนทัศน์</h2>
+    <div class="rule"></div>
+    <div class="shift">
+      <div class="row">
+        <div class="from"><small>กระบวนทัศน์เดิม</small>การเรียนรู้แบบแยกส่วนระหว่างศาสนาและวิทยาการ</div>
+        <div class="arrow">➜</div>
+        <div class="to"><small>กระบวนทัศน์ใหม่</small>การบูรณาการความรู้บนศูนย์กลางแห่งเตาฮีด</div>
+      </div>
+      <div class="row">
+        <div class="from"><small>กระบวนทัศน์เดิม</small>การควบคุมและกำกับจากภายนอก</div>
+        <div class="arrow">➜</div>
+        <div class="to"><small>กระบวนทัศน์ใหม่</small>การสะท้อนคิดและแรงจูงใจจากภายใน</div>
+      </div>
+      <div class="row">
+        <div class="from"><small>กระบวนทัศน์เดิม</small>การท่องจำที่จำกัดอยู่ในห้องเรียน</div>
+        <div class="arrow">➜</div>
+        <div class="to"><small>กระบวนทัศน์ใหม่</small>การปฏิบัติการทางสังคมเพื่อแก้ปัญหาชุมชน</div>
+      </div>
+    </div>
+    <div class="footer"><span><b>ปฏิญญาว่าด้วยการศึกษาอิสลามแห่งอนาคต</b> · โรงเรียนหาดใหญ่วิทยาคาร</span><span class="pg"></span></div>
+  </section>
+
+  <!-- 8. Model -->
+  <section class="slide">
+    <div class="topbar"></div>
+    <div class="kicker">ข้อเสนอเชิงนโยบาย · Proposed Model</div>
+    <h2 style="font-size:36px">The Tawhidic-Ecosystemic Reconstruction Model</h2>
+    <div class="rule" style="margin:14px 0 20px"></div>
+    <div class="roof">ศูนย์กลางแห่ง <span>เตาฮีด (Tawhid)</span> · กระบวนทัศน์ใหม่ของตัรฺบียะฮ์</div>
+    <div class="grid3">
+      <div class="pillar">
+        <div class="no">01</div>
+        <h3>Epistemological Re-centering</h3>
+        <div class="th">การสถาปนาศูนย์กลางทางญาณวิทยา</div>
+        <p>สถาปนาเตาฮีดเป็นแกนกลางของหลักสูตร เพื่อยุติการเรียนรู้แบบแยกส่วน</p>
+      </div>
+      <div class="pillar">
+        <div class="no">02</div>
+        <h3>From Regulation to Reflexivity</h3>
+        <div class="th">จากการควบคุมสู่การสะท้อนคิด</div>
+        <p>ใช้ระบบนิเวศหอพัก บันทึกสะท้อนคิดรายวัน (Spiritual Journal) และวินัยเชิงบวก</p>
+      </div>
+      <div class="pillar">
+        <div class="no">03</div>
+        <h3>Social Praxis &amp; Radical Empathy</h3>
+        <div class="th">การปฏิบัติการทางสังคมและความเห็นอกเห็นใจ</div>
+        <p>ขยายการเรียนรู้สู่ชุมชนผ่านโครงงานบริการสังคม (Khidmah Project)</p>
+      </div>
+    </div>
+    <div class="base"></div>
+    <div class="footer"><span><b>ปฏิญญาว่าด้วยการศึกษาอิสลามแห่งอนาคต</b> · โรงเรียนหาดใหญ่วิทยาคาร</span><span class="pg"></span></div>
+  </section>
+
+  <!-- 9. Implementation -->
+  <section class="slide">
+    <div class="topbar"></div>
+    <div class="kicker">แนวทางการขับเคลื่อน · Implementation</div>
+    <h2>แนวทางการขับเคลื่อนสู่การปฏิบัติในสถานศึกษา</h2>
+    <div class="rule"></div>
+    <ul class="pts" style="gap:30px">
+      <li><b>ด้านหลักสูตร:</b> บูรณาการความรู้ศาสนากับวิทยาการสมัยใหม่ พร้อมเสริมทักษะการรู้เท่าทันสื่อดิจิทัลบนหลัก <b>ตะบะยุน</b> (การตรวจสอบข้อเท็จจริง)</li>
+      <li><b>ด้านระบบนิเวศการเรียนรู้:</b> ใช้หอพักเป็นพื้นที่บ่มเพาะจิตวิญญาณ ผ่านบันทึกสะท้อนคิดรายวันและวินัยเชิงบวก</li>
+      <li><b>ด้านชุมชน:</b> ขับเคลื่อนโครงงานบริการสังคม (Khidmah Project) เพื่อสร้างพลเมืองที่มีอัคลากในสังคมพหุวัฒนธรรม</li>
+    </ul>
+    <div class="footer"><span><b>ปฏิญญาว่าด้วยการศึกษาอิสลามแห่งอนาคต</b> · โรงเรียนหาดใหญ่วิทยาคาร</span><span class="pg"></span></div>
+  </section>
+
+  <!-- 10. Conclusion -->
+  <section class="slide concl">
+    <div class="kicker">บทสรุป · The Manifesto</div>
+    <h2>มุ่งสู่การสร้าง “อูลุลอัลบาบ” (Ulul-Albab)</h2>
+    <div class="rule"></div>
+    <div class="quote">การพัฒนาหลักสูตรตัรฺบียะฮ์ <b>มิใช่กิจกรรมทางเทคนิค</b> แต่เป็นขบวนการทางปัญญา เพื่อกู้คืนจิตวิญญาณและสร้างภูมิคุ้มกันให้แก่เยาวชนมุสลิม</div>
+    <div class="ulul">
+      <div><b>ปัญญาญาณ</b>คิดวิเคราะห์อย่างมีอธิปไตยทางปัญญา</div>
+      <div><b>รู้เท่าทันสื่อ</b>ตรวจสอบข้อมูลในยุคดิจิทัล</div>
+      <div><b>จิตวิญญาณ</b>ผูกพันกับอัลลอฮ์อย่างแท้จริง</div>
+    </div>
+    <div class="thanks">
+      <div class="ty">ขอขอบคุณ</div>
+      <div class="who">นายยูซุฟ แขกพงศ์<br>ผู้อำนวยการโรงเรียนหาดใหญ่วิทยาคาร</div>
+    </div>
+    <div class="footer"><span><b>ปฏิญญาว่าด้วยการศึกษาอิสลามแห่งอนาคต</b> · โรงเรียนหาดใหญ่วิทยาคาร</span><span class="pg"></span></div>
+  </section>
+
+</div>
+
+<div class="controls">
+  <button id="prev" title="ก่อนหน้า">‹</button>
+  <span class="count" id="count"></span>
+  <button id="next" title="ถัดไป">›</button>
+</div>
+<div class="progress" id="progress"></div>
+
+<script>
+  const stage = document.getElementById('stage');
+  const slides = [...document.querySelectorAll('.slide')];
+  let cur = 0;
+
+  slides.forEach((s, i) => { const p = s.querySelector('.pg'); if (p) p.textContent = (i + 1) + ' / ' + slides.length; });
+
+  function fit() {
+    const s = Math.min(window.innerWidth / 1280, window.innerHeight / 720) * 0.96;
+    stage.style.transform = `translate(-50%,-50%) scale(${s})`;
+  }
+  function show(n) {
+    cur = Math.max(0, Math.min(slides.length - 1, n));
+    slides.forEach((s, i) => s.classList.toggle('active', i === cur));
+    document.getElementById('count').textContent = (cur + 1) + ' / ' + slides.length;
+    document.getElementById('progress').style.width = ((cur + 1) / slides.length * 100) + '%';
+    history.replaceState(null, '', '#' + (cur + 1));
+  }
+
+  document.getElementById('next').onclick = () => show(cur + 1);
+  document.getElementById('prev').onclick = () => show(cur - 1);
+  document.addEventListener('keydown', e => {
+    if (['ArrowRight', 'PageDown', ' ', 'Enter'].includes(e.key)) { e.preventDefault(); show(cur + 1); }
+    else if (['ArrowLeft', 'PageUp', 'Backspace'].includes(e.key)) { e.preventDefault(); show(cur - 1); }
+    else if (e.key === 'Home') show(0);
+    else if (e.key === 'End') show(slides.length - 1);
+    else if (e.key.toLowerCase() === 'f') {
+      document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen();
+    }
+  });
+  let tx = null;
+  document.addEventListener('touchstart', e => tx = e.touches[0].clientX);
+  document.addEventListener('touchend', e => {
+    if (tx === null) return;
+    const dx = e.changedTouches[0].clientX - tx;
+    if (Math.abs(dx) > 50) show(cur + (dx < 0 ? 1 : -1));
+    tx = null;
+  });
+
+  window.addEventListener('resize', fit);
+  fit();
+  show(parseInt(location.hash.slice(1)) - 1 || 0);
+</script>
+</body>
+</html>
